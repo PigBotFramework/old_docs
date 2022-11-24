@@ -16,8 +16,8 @@
 | `GetPswd` | *`uuid`机器人uuid | 获取某UUID的对应通信密钥 | 插件不应该随意获取机器人实例的通信密钥 |
 | `GetConfig` | *`uuid`机器人UUID, *`key`键, *`value`值, *`template`SQL语句模板, `sql`附加SQL语句 | 获取配置 | 该方法用来快速获取配置（懒人专用） |
 | `encryption` | *`data`DATA, *`secret`SECRET | `sha1`加密 | 进行SHA1加密，主要用于验证上报是否真实 |
-| `selectx` | *`sqlstr`SQL查询语句, `host`主机地址, `user`用户名, `password`密码, `database`数据库 | 执行查询语句并返回查询结果 | 多个查询结果返回列表，只有一个返回字典 |
-| `commonx` | *`sqlstr`SQL执行语句, `host`主机地址, `user`用户名, `password`密码, `database`数据库 | 执行SQL语句 | 无返回值 |
+| `selectx` | *`sqlstr`SQL查询语句, `params`execute参数, `host`主机地址, `user`用户名, `password`密码, `database`数据库 | 执行查询语句并返回查询结果 | 为防止SQL注入，请将参数用`%s`代替（无需带`""`），然后放在`params`中（`params`为元组），执行execute时会自动替换。多个查询结果返回列表，只有一个返回字典 |
+| `commonx` | *`sqlstr`SQL执行语句, `params`execute参数, `host`主机地址, `user`用户名, `password`密码, `database`数据库 | 执行SQL语句 | 为防止SQL注入，请将参数用`%s`代替（无需带`""`），然后放在`params`中（`params`为元组），执行execute时会自动替换。无返回值 |
 | `sendRawMessage` | *`content`消息内容 | 发送原始消息 | 发送消息推荐使用`send`方法 |
 | `sendChannel` | *`content`消息内容 | 发送频道消息 | 发送消息推荐使用`send`方法 |
 | `sendInsertStr` | *`content`消息内容 | 在内容里随机插入字符 | 返回插入后的消息内容 |

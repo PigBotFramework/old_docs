@@ -9,3 +9,4 @@
   - [send发送消息](api/send)
   - [nsfw检测](api/nsfw)
   - [imageutils](api/imageutils)
+  - [APScheduler](api/apscheduler)

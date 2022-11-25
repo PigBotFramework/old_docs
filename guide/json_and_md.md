@@ -42,6 +42,8 @@
     - "notice" 监听所有通知上报
     - "meta_event" 监听所有元事件上报
     - "command" 指令监听
+    - "chatterbot" 监听ChatterBot（自定义逻辑）
+      - CatterBot监听相当于泛匹配，当消息中包含`content`关键词时，就会触发。[实例](https://github.com/PigBotFrameworkPlugins/basic/blob/main/commands.json#L141)
       
     **请注意：**
     - 由于某些上报事件没有`sender`字段，机器人无法判断是否为管理员还是普通群员。**因此当监听`request`、`notice`、`meta_event`时，请不要使用`ao`和`admin`权限！**您可以设置为`anyone`然后在您的函数内再`CallApi`做判断
@@ -62,6 +64,18 @@
 | cost | 0.00 | 插件价格 |
   
   - `cost`插件价格为浮点数，为`0`时则免费
+  **以上字段是必须的**
+  
+| 字段名 | 可能的值（类型） | 描述 |
+| ------ | ---------------- | ---- |
+| init | "tools.addJob()" | 当机器人处理器的Py进程启动时执行的方法 |
+| require | ["test_tick"] | 引入到bot处理器中的函数 |
+  
+  **以上字段可选，使用方法可见实例TOOLS:**
+  - [tools/data.json](https://github.com/PigBotFrameworkPlugins/tools/blob/main/data.json#L7)
+  - [tools.addJob()](https://github.com/PigBotFrameworkPlugins/tools/blob/main/main.py#L493)
+  - [tools-test_tick()](https://github.com/PigBotFrameworkPlugins/tools/blob/main/main.py#L512)
+  - [APScheduler](/api/apscheduler)
   
 
 # md文件
